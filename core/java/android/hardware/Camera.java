@@ -145,6 +145,10 @@ public class Camera {
     private static final int CAMERA_MSG_RAW_IMAGE_NOTIFY = 0x200;
     private static final int CAMERA_MSG_PREVIEW_METADATA = 0x400;
     private static final int CAMERA_MSG_FOCUS_MOVE       = 0x800;
+    /* ### QC ADD-ONS: START */
+    private static final int CAMERA_MSG_STATS_DATA       = 0x1000;
+    private static final int CAMERA_MSG_META_DATA        = 0x2000;
+    /* ### QC ADD-ONS: END */
 
     private int mNativeContext; // accessed by native methods
     private EventHandler mEventHandler;
@@ -162,6 +166,10 @@ public class Camera {
     private boolean mWithBuffer;
     private boolean mFaceDetectionRunning = false;
     private Object mAutoFocusCallbackLock = new Object();
+    /* ### QC ADD-ONS: START */
+    private CameraDataCallback mCameraDataCallback;
+    private CameraMetaDataCallback mCameraMetaDataCallback;
+    /* ### QC ADD-ONS: END */
 
     /**
      * Broadcast Action:  A new picture is taken by the camera, and the entry of
@@ -228,6 +236,17 @@ public class Camera {
          */
         public static final int CAMERA_FACING_FRONT = 1;
 
+         /* ### QC ADD-ONS: START TBD*/
+        /** @hide
+         *  camera is in ZSL mode.
+         */
+        public static final int CAMERA_SUPPORT_MODE_ZSL = 2;
+
+        /** @hide
+         * camera is in non-ZSL mode.
+         */
+        public static final int CAMERA_SUPPORT_MODE_NONZSL = 3;
+         /* ### QC ADD-ONS: END */
         /**
          * The direction that the camera faces. It should be
          * CAMERA_FACING_BACK or CAMERA_FACING_FRONT.
@@ -328,6 +347,10 @@ public class Camera {
         mPreviewCallback = null;
         mPostviewCallback = null;
         mZoomListener = null;
+        /* ### QC ADD-ONS: START */
+        mCameraDataCallback = null;
+        mCameraMetaDataCallback = null;
+        /* ### QC ADD-ONS: END */
 
         Looper looper;
         if ((looper = Looper.myLooper()) != null) {
@@ -831,6 +854,16 @@ public class Camera {
             case CAMERA_MSG_FOCUS_MOVE:
                 if (mAutoFocusMoveCallback != null) {
                     mAutoFocusMoveCallback.onAutoFocusMoving(msg.arg1 == 0 ? false : true, mCamera);
+                }
+                return;
+            /* ### QC ADD-ONS: START */
+            case CAMERA_MSG_STATS_DATA:
+                int statsdata[] = new int[257];
+                for(int i =0; i<257; i++ ) {
+                   statsdata[i] = byteToInt( (byte[])msg.obj, i*4);
+                }
+                if (mCameraDataCallback != null) {
+                     mCameraDataCallback.onCameraData(statsdata, mCamera);
                 }
                 return;
 
@@ -1680,7 +1713,6 @@ public class Camera {
         public int yCoordinate;
     };
     /* ### QC ADD-ONS: END */
-
     /**
      * Image size (width and height dimensions).
      */
@@ -1977,6 +2009,11 @@ public class Camera {
         /** @hide */
         public static final String ISO_6400 = "ISO6400";
 
+        /** @hide
+         * Scene mode is off.
+         */
+        public static final String SCENE_MODE_ASD = "asd";
+
         /**
          * Scene mode is off.
          */
@@ -2053,6 +2090,14 @@ public class Camera {
          * Capture the naturally warm color of scenes lit by candles.
          */
         public static final String SCENE_MODE_CANDLELIGHT = "candlelight";
+        /** @hide
+        * SCENE_MODE_BACKLIGHT
+        **/
+        public static final String SCENE_MODE_BACKLIGHT = "backlight";
+        /** @hide
+        * SCENE_MODE_FLOWERS
+        **/
+        public static final String SCENE_MODE_FLOWERS = "flowers";
 
         /**
          * Applications are looking for a barcode. Camera driver will be
@@ -2094,6 +2139,13 @@ public class Camera {
          * not call {@link #autoFocus(AutoFocusCallback)} in this mode.
          */
         public static final String FOCUS_MODE_FIXED = "fixed";
+
+        /** @hide
+         * Normal focus mode. Applications should call
+         * {@link #autoFocus(AutoFocusCallback)} to start the focus in this
+         * mode.
+         */
+        public static final String FOCUS_MODE_NORMAL = "normal";
 
         /**
          * Extended depth of field (EDOF). Focusing is done digitally and
@@ -2183,11 +2235,15 @@ public class Camera {
         // Formats for setPreviewFormat and setPictureFormat.
         private static final String PIXEL_FORMAT_YUV422SP = "yuv422sp";
         private static final String PIXEL_FORMAT_YUV420SP = "yuv420sp";
+        private static final String PIXEL_FORMAT_YUV420SP_ADRENO = "yuv420sp-adreno";
         private static final String PIXEL_FORMAT_YUV422I = "yuv422i-yuyv";
         private static final String PIXEL_FORMAT_YUV420P = "yuv420p";
         private static final String PIXEL_FORMAT_RGB565 = "rgb565";
         private static final String PIXEL_FORMAT_JPEG = "jpeg";
         private static final String PIXEL_FORMAT_BAYER_RGGB = "bayer-rggb";
+        private static final String PIXEL_FORMAT_RAW = "raw";
+        private static final String PIXEL_FORMAT_YV12 = "yv12";
+        private static final String PIXEL_FORMAT_NV12 = "nv12";
 
         private HashMap<String, String> mMap;
 
@@ -2919,8 +2975,11 @@ public class Camera {
          * parameters.
          */
         public void removeGpsData() {
+            remove(KEY_QC_GPS_LATITUDE_REF);
             remove(KEY_GPS_LATITUDE);
+            remove(KEY_QC_GPS_LONGITUDE_REF);
             remove(KEY_GPS_LONGITUDE);
+            remove(KEY_QC_GPS_ALTITUDE_REF);
             remove(KEY_GPS_ALTITUDE);
             remove(KEY_GPS_TIMESTAMP);
             remove(KEY_GPS_PROCESSING_METHOD);
