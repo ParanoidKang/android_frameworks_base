@@ -20,7 +20,6 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.content.Context;
-import android.provider.Settings;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
@@ -95,10 +94,7 @@ public class KeyguardWidgetCarousel extends KeyguardWidgetPager {
                 if (child != null) {
                     float outlineAlpha = getOutlineAlphaForPage(screenCenter, i, showSidePages);
                     float contentAlpha = getAlphaForPage(screenCenter, i,showSidePages);
-                    if (Settings.System.getInt(mContext.getContentResolver(),
-                          Settings.System.LOCKSCREEN_HIDE_HINTS, 0) == 0) {
-                       child.setBackgroundAlpha(outlineAlpha);
-                }
+                    child.setBackgroundAlpha(outlineAlpha);
                     child.setContentAlpha(contentAlpha);
                 }
             }
