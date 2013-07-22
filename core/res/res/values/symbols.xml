@@ -589,6 +589,7 @@
   <java-symbol type="string" name="lockscreen_transport_pause_description" />
   <java-symbol type="string" name="lockscreen_transport_play_description" />
   <java-symbol type="string" name="lockscreen_transport_stop_description" />
+  
   <java-symbol type="string" name="low_memory" />
   <java-symbol type="string" name="media_bad_removal" />
   <java-symbol type="string" name="media_checking" />
@@ -1252,12 +1253,17 @@
   <java-symbol type="dimen" name="kg_edge_swipe_region_size" />
   <java-symbol type="dimen" name="kg_squashed_layout_threshold" />
   <java-symbol type="dimen" name="kg_small_widget_height" />
+  <java-symbol type="dimen" name="lockscreen_target_inset" />
   <java-symbol type="drawable" name="ic_jog_dial_sound_off" />
   <java-symbol type="drawable" name="ic_jog_dial_sound_on" />
   <java-symbol type="drawable" name="ic_jog_dial_unlock" />
   <java-symbol type="drawable" name="ic_jog_dial_vibrate_on" />
   <java-symbol type="drawable" name="ic_lock_airplane_mode" />
   <java-symbol type="drawable" name="ic_lock_airplane_mode_off" />
+  <java-symbol type="drawable" name="ic_lockscreen_lock_pressed" />
+  <java-symbol type="drawable" name="ic_lockscreen_target_activated" />
+  <java-symbol type="drawable" name="ic_lockscreen_unlock_activated" />
+  <java-symbol type="drawable" name="ic_lockscreen_unlock_normal" />
   <java-symbol type="drawable" name="ic_menu_cc" />
   <java-symbol type="drawable" name="jog_tab_bar_left_unlock" />
   <java-symbol type="drawable" name="jog_tab_bar_right_sound_off" />
@@ -1365,7 +1371,6 @@
   <java-symbol type="id" name="keyguard_user_selector" />
   <java-symbol type="id" name="key_enter" />
   <java-symbol type="id" name="keyguard_selector_view_frame" />
-  <java-symbol type="id" name="targets" />
   <java-symbol type="integer" name="config_carDockRotation" />
   <java-symbol type="integer" name="config_defaultUiModeType" />
   <java-symbol type="integer" name="config_deskDockRotation" />
@@ -1389,7 +1394,6 @@
   <java-symbol type="layout" name="keyguard_screen_unlock_landscape" />
   <java-symbol type="layout" name="keyguard_screen_unlock_portrait" />
   <java-symbol type="layout" name="keyguard_selector_view" />
-  <java-symbol type="layout" name="keyguard_targets" />
   <java-symbol type="layout" name="keyguard_pattern_view" />
   <java-symbol type="layout" name="keyguard_password_view" />
   <java-symbol type="layout" name="keyguard_pin_view" />
