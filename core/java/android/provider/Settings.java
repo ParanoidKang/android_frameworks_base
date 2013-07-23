@@ -1973,6 +1973,12 @@ public final class Settings {
          * ringer mode change.
          */
         public static final String APPEND_FOR_LAST_AUDIBLE = "_last_audible";
+        
+        /**
+         * Whether the blacklisting feature for phone calls is enabled
+		 * @hide
+         */
+        public static final String PHONE_BLACKLIST_ENABLED = "phone_blacklist_enabled";
 
         /**
          * Persistent store for the system-wide default ringtone URI.
