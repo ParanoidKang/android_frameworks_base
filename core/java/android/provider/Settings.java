@@ -2810,7 +2810,7 @@ public final class Settings {
          * @hide
          */
         public static final String STATUS_BAR_NOTIF_COUNT = "status_bar_notif_count";
-
+        
         /**
          * Show the notification ticker (or not)
          * @hide
@@ -4776,6 +4776,12 @@ public final class Settings {
          * @hide
          */
         public static final String MOUNT_PLAY_NOTIFICATION_SND = "mount_play_not_snd";
+        
+        /**
+         * Whether to allow killing of the foreground app by long-pressing the Back button
+         * @hide
+         */
+        public static final String KILL_APP_LONGPRESS_BACK = "kill_app_longpress_back";
 
         /**
          * Whether or not UMS auto-starts on UMS host detection. (0 = false, 1 = true)

@@ -1766,6 +1766,7 @@
   <java-symbol type="bool" name="config_intrusiveNotificationLed" />
   <java-symbol type="bool" name="config_intrusiveBatteryLed" />
   <java-symbol type="bool" name="config_multiColorBatteryLed" />
+  <java-symbol type="integer" name="config_backKillTimeout" />
   <java-symbol type="dimen" name="preference_fragment_padding_bottom" />
   <java-symbol type="dimen" name="preference_fragment_padding_side" />
   <java-symbol type="drawable" name="expander_ic_maximized" />
@@ -1777,6 +1778,7 @@
   <java-symbol type="id" name="body" />
   <java-symbol type="string" name="fast_scroll_alphabet" />
   <java-symbol type="string" name="ssl_certificate" />
+  <java-symbol type="string" name="app_killed_message" />
 
   <!-- From Phone -->
   <java-symbol type="bool" name="config_built_in_sip_phone" />
