@@ -4782,6 +4782,12 @@ public final class Settings {
          * @hide
          */
         public static final String KILL_APP_LONGPRESS_BACK = "kill_app_longpress_back";
+        
+        /**
+         * Whether to enable permission manager
+         * @hide
+         */
+        public static final String ENABLE_PERMISSIONS_MANAGEMENT = "enable_permissions_management";
 
         /**
          * Whether or not UMS auto-starts on UMS host detection. (0 = false, 1 = true)
