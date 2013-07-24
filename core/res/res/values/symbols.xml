@@ -1915,4 +1915,7 @@
   <!-- Developer settings - Kill app back press -->
   <java-symbol type="string" name="app_killed_message" />
 
+  <!-- Electron Beam -->
+  <java-symbol type="bool" name="config_screenOffAnimation" />
+
 </resources>
