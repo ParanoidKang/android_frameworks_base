@@ -2005,6 +2005,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             loadIntegerSetting(stmt, Settings.System.POINTER_SPEED,
                     R.integer.def_pointer_speed);
 
+            loadStringSetting(stmt, Settings.System.LOCKSCREEN_TARGETS,
+                    R.string.def_lockscreen_targets);
         } finally {
             if (stmt != null) stmt.close();
         }
@@ -2118,7 +2120,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
             loadBooleanSetting(stmt, Settings.Secure.USER_SETUP_COMPLETE,
                     R.bool.def_user_setup_complete);
-
+                    
             loadIntegerSetting(stmt, Settings.System.UI_FORCE_OVERFLOW_BUTTON,
                     R.integer.def_force_overflow_button);
 
