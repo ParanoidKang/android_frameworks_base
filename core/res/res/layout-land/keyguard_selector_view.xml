@@ -49,22 +49,10 @@
 
         <include layout="@layout/keyguard_glow_pad_container" />
 
-        <LinearLayout
-            android:orientation="vertical"
+        <include layout="@layout/keyguard_message_area"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center_horizontal">
-
-            <include layout="@layout/keyguard_targets"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="top|center_horizontal"/>
-
-            <include layout="@layout/keyguard_message_area"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|center_horizontal" />
-        </LinearLayout>
+            android:layout_gravity="bottom|center_horizontal" />
 
         <include layout="@layout/keyguard_eca"
             android:id="@+id/keyguard_selector_fade_container"
