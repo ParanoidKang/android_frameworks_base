@@ -174,6 +174,7 @@ public class Halo extends FrameLayout implements Ticker.TickerCallback, TabletTi
     private boolean mInitialized = false;
     private boolean mTickerLeft = true;
     private boolean mIsNotificationNew = true;
+    private boolean mPingNewcomer = false;
     private boolean mOverX = false;
     private boolean mInteractionReversed = true;
     private boolean hiddenState = false;
@@ -330,9 +331,6 @@ public class Halo extends FrameLayout implements Ticker.TickerCallback, TabletTi
 
         mKillX = mScreenWidth / 2;
         mKillY = mIconHalfSize;
-
-        // In the unlikely event the user still holds on to HALO just let it be
-        if (mState != State.IDLE) return;
         
         // Halo dock position
         preferences = mContext.getSharedPreferences("Halo", 0);
@@ -1342,6 +1340,7 @@ public class Halo extends FrameLayout implements Ticker.TickerCallback, TabletTi
         mEffect.tickerAnimator.cancel(true);
         mEffect.mHaloNumber.setAlpha(0f);
         mEffect.mHaloNumberIcon.setAlpha(0f);
+        mEffect.mHaloNumberContainer.setAlpha(0f);
         mContentIntent = null;
         mCurrentNotficationEntry = null;
         mEffect.killTicker();
@@ -1392,7 +1391,7 @@ public class Halo extends FrameLayout implements Ticker.TickerCallback, TabletTi
         if (entry.notification.getPackageName().equals("com.paranoid.halo")) {
             msgType = HaloProperties.MessageType.PINNED;
         } else if (!entry.notification.isClearable()) {
-            msgType = HaloProperties.MessageType.PINNED;
+            msgType = HaloProperties.MessageType.SYSTEM;
         } else {
             msgType = HaloProperties.MessageType.MESSAGE;
         }
@@ -1405,7 +1404,6 @@ public class Halo extends FrameLayout implements Ticker.TickerCallback, TabletTi
 
     // This is the android ticker callback
     public void updateTicker(StatusBarNotification notification, String text) {
-
         boolean allowed = false; // default off
         try {
             allowed = mNotificationManager.isPackageAllowedForHalo(notification.getPackageName());
@@ -1519,6 +1517,16 @@ public class Halo extends FrameLayout implements Ticker.TickerCallback, TabletTi
 
         @Override
         public void onNotificationPosted(StatusBarNotification notification) throws RemoteException {
+            boolean allowed = false;
+
+            if (mKeyguardManager.isKeyguardLocked() && notification.isClearable()) {
+                try {
+                    allowed = mNotificationManager.isPackageAllowedForHalo(notification.getPackageName());
+                } catch (android.os.RemoteException ex) {
+                    // System is dead
+                }
+                if (allowed) mPingNewcomer = true;
+            }
         }
 
         @Override
@@ -1570,7 +1578,7 @@ public class Halo extends FrameLayout implements Ticker.TickerCallback, TabletTi
             // Because notifications are not readily visible and HALO does not "tick" on protected lock screens
             if(intent.getAction().equals(Intent.ACTION_USER_PRESENT) &&
                     Settings.System.getInt(mContext.getContentResolver(), Settings.System.HALO_ACTIVE, 0) == 1 &&
-                    mState != State.SILENT) {
+                    mState != State.SILENT && mPingNewcomer) {
                 if (mKeyguardManager.isKeyguardSecure() ||
                         (Settings.System.getInt(mContext.getContentResolver(), Settings.System.EXPANDED_DESKTOP_STATE, 0) == 1 &&
                                 mState == State.HIDDEN)) {
@@ -1583,8 +1591,9 @@ public class Halo extends FrameLayout implements Ticker.TickerCallback, TabletTi
                                 mEffect.wake();
                                 mEffect.nap(HaloEffect.NAP_DELAY + HaloEffect.WAKE_TIME * 2);
                                 if (mHideTicker) mEffect.sleep(HaloEffect.SLEEP_DELAY + HaloEffect.WAKE_TIME * 2, HaloEffect.SLEEP_TIME, false);
-                                tick(entry, HaloEffect.WAKE_TIME * 2, 1000, false, true, true);
+                                tick(entry, HaloEffect.WAKE_TIME * 2, 1000, false, true, false);
                                 mEffect.ping(mPaintHoloBlue, HaloEffect.WAKE_TIME * 2);
+                                mPingNewcomer = false;
                             }
                     }
                     }, 400);
