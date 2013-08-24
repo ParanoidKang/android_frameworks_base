@@ -1132,6 +1132,9 @@
     <!-- Path to the library that contains a device specific key handler -->
     <string name="config_deviceKeyHandlerLib" translatable="false"></string>
 
+    <!-- True will enable the electron beam screen-off animation. -->
+    <bool name="config_screenOffAnimation">true</bool>
+
     <!-- Name of that key handler class -->
     <string name="config_deviceKeyHandlerClass" translatable="false"></string>
 

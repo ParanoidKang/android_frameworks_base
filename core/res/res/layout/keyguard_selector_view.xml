@@ -38,6 +38,11 @@
         android:clipChildren="false"
         android:clipToPadding="false"
         android:gravity="center">
+        
+        <include layout="@layout/keyguard_message_area"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal" />
 
         <View
             android:id="@+id/keyguard_selector_view_frame"
@@ -54,10 +59,6 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_gravity="bottom|center_horizontal" />
-
-        <include layout="@layout/keyguard_message_area"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
 
     </FrameLayout>
 

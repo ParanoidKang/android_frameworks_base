@@ -1882,6 +1882,12 @@ public final class Settings {
          * @hide
          */
         public static final String AUTO_BRIGHTNESS_RESPONSIVENESS = "auto_brightness_responsiveness";
+        
+        /**
+         * Whether to enable the electron beam animation when turning screen off
+         *
+         * @hide */
+        public static final String SCREEN_OFF_ANIMATION = "screen_off_animation";
 
          /**
           * Determines which streams are affected by mute. The
@@ -3081,6 +3087,12 @@ public final class Settings {
          * @hide
          */
         public static final String LOCKSCREEN_MAXIMIZE_WIDGETS = "lockscreen_maximize_widgets";
+        
+        /**
+         * Stores values for custom lockscreen targets
+         * @hide
+         */
+        public static final String LOCKSCREEN_TARGETS = "lockscreen_targets";
 
         /**
          * Volume keys control cursor in text fields (default is 0)
