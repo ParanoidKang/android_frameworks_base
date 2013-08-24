@@ -80,6 +80,15 @@
     <string name="RestrictedOnVoiceData" msgid="996636487106171320">"已停用语音/数据服务。"</string>
     <string name="RestrictedOnVoiceSms" msgid="1888588152792023873">"已禁用语音/短信服务。"</string>
     <string name="RestrictedOnAll" msgid="5643028264466092821">"已停用所有语音/数据/短信服务。"</string>
+    <string name="RestrictedChangedTitle">改变受限访问</string>
+    <string name="RestrictedOnData">数据服务被阻止。</string>
+    <string name="RestrictedOnEmergency">紧急服务被阻止。</string>
+    <string name="RestrictedOnNormal">语音服务被阻止。</string>
+    <string name="RestrictedOnAllVoice">所有的语音服务被阻止。</string>
+    <string name="RestrictedOnSms">短信服务被阻止。</string>
+    <string name="RestrictedOnVoiceData">语音/数据服务被阻止。</string>
+    <string name="RestrictedOnVoiceSms">语音/短信服务被阻止。</string>
+    <string name="RestrictedOnAll">所有的语音/数据/短信服务被阻止。</string>
     <string name="serviceClassVoice" msgid="1258393812335258019">"语音"</string>
     <string name="serviceClassData" msgid="872456782077937893">"数据"</string>
     <string name="serviceClassFAX" msgid="5566624998840486475">"传真"</string>
@@ -148,6 +157,16 @@
     <string name="shutdown_confirm_question" msgid="2906544768881136183">"您要关机吗？"</string>
     <string name="reboot_safemode_title" msgid="7054509914500140361">"重新启动并进入安全模式"</string>
     <string name="reboot_safemode_confirm" msgid="55293944502784668">"您要重新启动并进入安全模式吗？这样会停用您已安装的所有第三方应用。再次重新启动将恢复这些应用。"</string>
+    <string name="reboot_system" product="tablet">重新启动平板</string>
+    <string name="reboot_system" product="default">重启手机</string>
+    <string name="reboot_reboot">重新启动</string>
+    <string name="reboot_recovery">刷机模式</string>
+    <string name="reboot_progress">重启中</string>
+    <string name="reboot_confirm">您的设备将重新启动</string>
+    <string name="global_action_screenshot">截屏</string>
+    <string name="global_action_expanded_desktop">全屏幕（PIE）</string>
+    <string name="global_action_expanded_desktop_on">启用</string>
+    <string name="global_action_expanded_desktop_off">禁用</string>
     <string name="recent_tasks_title" msgid="3691764623638127888">"近期任务"</string>
     <string name="no_recent_tasks" msgid="8794906658732193473">"最近没有运行任何应用"</string>
     <string name="global_actions" product="tablet" msgid="408477140088053665">"平板电脑选项"</string>
@@ -1496,4 +1515,9 @@
     <string name="app_no_restricted_accounts" msgid="4011285085817350390">"此应用不支持受限个人资料的帐户"</string>
     <string name="app_not_found" msgid="3429141853498927379">"找不到可处理此操作的应用"</string>
     <string name="revoke" msgid="5404479185228271586">"撤消"</string>
+    <string name="stylus_app_not_installed">％s未安装</string>
+    <string name="permlab_interceptSmsSent">拦截外拨短信</string>
+    <string name="permdesc_interceptSmsSent">允许应用程式
+        拦截传出的短信。
+        恶意应用可能会利用此以防止发送短信。</string>
 </resources>
