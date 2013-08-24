@@ -608,6 +608,7 @@ android.media.RemoteDisplay
 android.media.ResampleInputStream
 android.media.SoundPool
 android.media.ToneGenerator
+android.mokee.location.PhoneLocation
 android.media.videoeditor.MediaArtistNativeHelper
 android.media.videoeditor.VideoEditorProfile
 android.mtp.MtpDatabase
