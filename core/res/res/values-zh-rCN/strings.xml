@@ -80,15 +80,6 @@
     <string name="RestrictedOnVoiceData" msgid="996636487106171320">"已停用语音/数据服务。"</string>
     <string name="RestrictedOnVoiceSms" msgid="1888588152792023873">"已禁用语音/短信服务。"</string>
     <string name="RestrictedOnAll" msgid="5643028264466092821">"已停用所有语音/数据/短信服务。"</string>
-    <string name="RestrictedChangedTitle">改变受限访问</string>
-    <string name="RestrictedOnData">数据服务被阻止。</string>
-    <string name="RestrictedOnEmergency">紧急服务被阻止。</string>
-    <string name="RestrictedOnNormal">语音服务被阻止。</string>
-    <string name="RestrictedOnAllVoice">所有的语音服务被阻止。</string>
-    <string name="RestrictedOnSms">短信服务被阻止。</string>
-    <string name="RestrictedOnVoiceData">语音/数据服务被阻止。</string>
-    <string name="RestrictedOnVoiceSms">语音/短信服务被阻止。</string>
-    <string name="RestrictedOnAll">所有的语音/数据/短信服务被阻止。</string>
     <string name="serviceClassVoice" msgid="1258393812335258019">"语音"</string>
     <string name="serviceClassData" msgid="872456782077937893">"数据"</string>
     <string name="serviceClassFAX" msgid="5566624998840486475">"传真"</string>
