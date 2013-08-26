@@ -92,13 +92,6 @@ public final class BluetoothInputDevice implements BluetoothProfile {
         "codeaurora.bluetooth.input.profile.action.IDLE_TIME_CHANGED";
 
     /**
-     * @hide
-     */
-    @SdkConstant(SdkConstantType.BROADCAST_INTENT_ACTION)
-    public static final String ACTION_IDLE_TIME_CHANGED =
-        "codeaurora.bluetooth.input.profile.action.IDLE_TIME_CHANGED";
-
-    /**
      * Return codes for the connect and disconnect Bluez / Dbus calls.
      * @hide
      */
@@ -195,11 +188,6 @@ public final class BluetoothInputDevice implements BluetoothProfile {
      */
     public static final String EXTRA_VIRTUAL_UNPLUG_STATUS = "android.bluetooth.BluetoothInputDevice.extra.VIRTUAL_UNPLUG_STATUS";
     
-    /**
-     * @hide
-     */
-    public static final String EXTRA_IDLE_TIME = "codeaurora.bluetooth.BluetoothInputDevice.extra.IDLE_TIME";
-
     /**
      * @hide
      */
