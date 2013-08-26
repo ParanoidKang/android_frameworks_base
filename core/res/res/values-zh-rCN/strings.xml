@@ -148,14 +148,15 @@
     <string name="shutdown_confirm_question" msgid="2906544768881136183">"您要关机吗？"</string>
     <string name="reboot_safemode_title" msgid="7054509914500140361">"重新启动并进入安全模式"</string>
     <string name="reboot_safemode_confirm" msgid="55293944502784668">"您要重新启动并进入安全模式吗？这样会停用您已安装的所有第三方应用。再次重新启动将恢复这些应用。"</string>
-    <string name="reboot_system" product="tablet">重新启动平板</string>
+    <string name="reboot_system" product="tablet">重启平板</string>
     <string name="reboot_system" product="default">重启手机</string>
     <string name="reboot_reboot">重新启动</string>
-    <string name="reboot_recovery">刷机模式</string>
+    <string name="reboot_recovery">恢复模式</string>
+    <string name="reboot_fastboot">刷机模式</string>
     <string name="reboot_progress">重启中</string>
     <string name="reboot_confirm">您的设备将重新启动</string>
     <string name="global_action_screenshot">截屏</string>
-    <string name="global_action_expanded_desktop">全屏幕（PIE）</string>
+    <string name="global_action_expanded_desktop">全屏模式 (PIE)</string>
     <string name="global_action_expanded_desktop_on">启用</string>
     <string name="global_action_expanded_desktop_off">禁用</string>
     <string name="recent_tasks_title" msgid="3691764623638127888">"近期任务"</string>
@@ -167,6 +168,7 @@
     <string name="global_action_bug_report" msgid="7934010578922304799">"错误报告"</string>
     <string name="bugreport_title" msgid="2667494803742548533">"提交错误报告"</string>
     <string name="bugreport_message" msgid="398447048750350456">"这会收集有关当前设备状态的信息，并以电子邮件的形式进行发送。从开始生成错误报告到准备好发送需要一点时间，请耐心等待。"</string>
+    <string name="global_action_reboot">重新启动</string>
     <string name="global_action_toggle_silent_mode" msgid="8219525344246810925">"静音模式"</string>
     <string name="global_action_silent_mode_on_status" msgid="3289841937003758806">"声音已关闭"</string>
     <string name="global_action_silent_mode_off_status" msgid="1506046579177066419">"声音已开启"</string>
