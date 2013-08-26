@@ -91,6 +91,12 @@ public final class BluetoothInputDevice implements BluetoothProfile {
     public static final String ACTION_IDLE_TIME_CHANGED =
         "codeaurora.bluetooth.input.profile.action.IDLE_TIME_CHANGED";
 
+    /**
+     * @hide
+     */
+    @SdkConstant(SdkConstantType.BROADCAST_INTENT_ACTION)
+    public static final String ACTION_IDLE_TIME_CHANGED =
+        "codeaurora.bluetooth.input.profile.action.IDLE_TIME_CHANGED";
 
     /**
      * Return codes for the connect and disconnect Bluez / Dbus calls.
@@ -189,6 +195,11 @@ public final class BluetoothInputDevice implements BluetoothProfile {
      */
     public static final String EXTRA_VIRTUAL_UNPLUG_STATUS = "android.bluetooth.BluetoothInputDevice.extra.VIRTUAL_UNPLUG_STATUS";
     
+    /**
+     * @hide
+     */
+    public static final String EXTRA_IDLE_TIME = "codeaurora.bluetooth.BluetoothInputDevice.extra.IDLE_TIME";
+
     /**
      * @hide
      */
@@ -646,7 +657,7 @@ public final class BluetoothInputDevice implements BluetoothProfile {
         if (mService == null) Log.w(TAG, "Proxy not attached to service");
         return false;
     }
-    
+
     /**
      * Send Get_Idle_Time command to the connected HID input device.
      *
@@ -695,7 +706,7 @@ public final class BluetoothInputDevice implements BluetoothProfile {
         if (mService == null) Log.w(TAG, "Proxy not attached to service");
         return false;
     }
-    
+
     private static void log(String msg) {
       Log.d(TAG, msg);
     }
