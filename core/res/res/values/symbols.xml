@@ -1918,4 +1918,6 @@
   <!-- Electron Beam -->
   <java-symbol type="bool" name="config_screenOffAnimation" />
 
+  <!-- Screenshort Trash -->
+  <java-symbol type="string" name="trash" />
 </resources>
