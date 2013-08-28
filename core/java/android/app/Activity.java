@@ -17,6 +17,7 @@
 
 package android.app;
 
+import com.android.internal.R;
 import com.android.internal.app.ActionBarImpl;
 import com.android.internal.policy.PolicyManager;
 
@@ -94,6 +95,7 @@ import java.io.FileDescriptor;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * An activity is a single, focused thing that the user can do.  Almost all
@@ -911,6 +913,23 @@ public class Activity extends ContextThemeWrapper
         mFragments.dispatchCreate();
         getApplication().dispatchActivityCreated(this, savedInstanceState);
         mCalled = true;
+        if (isCurrentHomeActivity()) {
+            // disable swipe back on launchers
+            setSwipeBackEnable(false);
+        }
+    }
+
+    /**
+     * get if this activity is home
+     *
+     */
+
+    private boolean isCurrentHomeActivity() {
+        ActivityInfo homeInfo = new Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_HOME)
+                .resolveActivityInfo(this.getPackageManager(), 0);
+        return homeInfo != null
+                && homeInfo.packageName.equals(this.getPackageName())
+                && homeInfo.name.equals(this.getClass().getName());
     }
 
     /**
