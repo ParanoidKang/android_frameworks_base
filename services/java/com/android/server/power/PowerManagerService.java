@@ -195,12 +195,6 @@ public final class PowerManagerService extends IPowerManager.Stub
     private int mKeyboardBrightness;
     private int mKeyboardBrightnessSettingDefault;
 
-    private int mButtonTimeout;
-    private int mButtonBrightness;
-    private int mButtonBrightnessSettingDefault;
-    private int mKeyboardBrightness;
-    private int mKeyboardBrightnessSettingDefault;
-
     private final Object mLock = new Object();
 
     // A bitfield that indicates what parts of the power state have
