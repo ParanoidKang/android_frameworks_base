@@ -2704,21 +2704,6 @@ public final class Settings {
          * @hide
          */
         public static final String STATUS_ICON_COLOR = "status_icon_color";
-        
-        /**
-         * Whether to enable Swipe Back Layout Gesture
-         * Default: 0
-         *
-         * @hide
-         */
-        public static final String SWIPE_BACK_GESTURE_ENABLED = "swipe_back_gesture_enabled";
-
-        /**
-         * Swipe edge of the swipe back layout gesture
-         *
-         * @hide
-         */
-        public static final String SWIPE_BACK_GESTURE_EDGE = "swipe_back_gesture_edge";
 
         /**
          * Foreground App
