@@ -25,6 +25,7 @@ import android.graphics.Point;
 import android.os.RemoteException;
 import android.provider.Settings;
 import android.util.DisplayMetrics;
+import android.util.ExtendedPropertiesUtils;
 import android.util.SparseArray;
 
 /**
@@ -673,7 +674,8 @@ public class ViewConfiguration {
         IWindowManager wm = WindowManagerGlobal.getWindowManagerService();
         // Report no menu key if device has soft buttons
         try {
-            if (wm.hasSystemNavBar() || wm.hasNavigationBar()) {
+            if (wm.hasSystemNavBar() ||
+                    ExtendedPropertiesUtils.hasNavigationBar()) {
                 return false;
             }
         } catch (RemoteException ex) {
