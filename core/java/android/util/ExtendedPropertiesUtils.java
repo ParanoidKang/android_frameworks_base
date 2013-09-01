@@ -310,6 +310,17 @@ public class ExtendedPropertiesUtils {
         }
         return layout >= 1000;
     }
+    
+    public static boolean hasNavigationBar() {
+        int value;
+        String prop = readProperty("com.android.systemui.navbar.dpi", "0");
+        if(isParsableToInt(prop)) {
+            value = Integer.parseInt(prop);
+        } else {
+            value = getActualProperty(prop);
+        }
+        return value > 0;
+    }
 
     
     /**
