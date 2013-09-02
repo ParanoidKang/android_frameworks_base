@@ -28,7 +28,9 @@ import android.net.TrafficStats;
 import android.os.Handler;
 import android.provider.Settings;
 import android.util.AttributeSet;
+import android.view.Gravity;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.android.systemui.R;
@@ -43,10 +45,16 @@ public class NetworkStatsView extends LinearLayout {
 
     private TextView mTextViewTx;
     private TextView mTextViewRx;
+    private LinearLayout mLayoutTop;
+    private LinearLayout mLayoutBottom;
+    private ImageView mImageOut;
+    private ImageView mImageIn;
     private long mLastTx;
     private long mLastRx;
     private long mRefreshInterval;
     private long mLastUpdateTime;
+    private boolean isMultiLineStyle;
+    private LinearLayout.LayoutParams mParams;
 
     SettingsObserver mSettingsObserver;
 
@@ -92,6 +100,8 @@ public class NetworkStatsView extends LinearLayout {
                     Settings.System.STATUS_BAR_NETWORK_STATS), false, this);
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.STATUS_BAR_NETWORK_STATS_UPDATE_INTERVAL), false, this);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.STATUS_BAR_NETWORK_STATS_STYLE), false, this);
             onChange(true);
         }
 
@@ -108,6 +118,10 @@ public class NetworkStatsView extends LinearLayout {
 
             mRefreshInterval = Settings.System.getLong(mContext.getContentResolver(),
                     Settings.System.STATUS_BAR_NETWORK_STATS_UPDATE_INTERVAL, 500);
+            
+            isMultiLineStyle = (Settings.System.getInt(mContext.getContentResolver(),
+                    Settings.System.STATUS_BAR_NETWORK_STATS_STYLE, 0) == 2 ? true : false);
+            // 1 for single line, 2 for multiline
 
             setVisibility(mActivated ? View.VISIBLE : View.GONE);
 
@@ -131,8 +145,12 @@ public class NetworkStatsView extends LinearLayout {
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
+        mLayoutTop = (LinearLayout) findViewById(R.id.top_group);
+        mLayoutBottom = (LinearLayout) findViewById(R.id.bottom_group);
         mTextViewTx = (TextView) findViewById(R.id.bytes_tx);
         mTextViewRx = (TextView) findViewById(R.id.bytes_rx);
+        mImageIn = (ImageView) findViewById(R.id.img_in);
+        mImageOut = (ImageView) findViewById(R.id.img_out);
     }
 
     @Override
@@ -153,27 +171,29 @@ public class NetworkStatsView extends LinearLayout {
     }
 
     private void updateStats() {
-        if (!mActivated || !mAttached) {
-            mHandler.removeCallbacks(mUpdateRunnable);
-            return;
-        }
-
-        final long currentBytesTx = TrafficStats.getTotalTxBytes();
+        updateStyle();
         final long currentBytesRx = TrafficStats.getTotalRxBytes();
         final long currentTimeMillis = System.currentTimeMillis();
-        long deltaBytesTx = currentBytesTx - mLastTx;
         long deltaBytesRx = currentBytesRx - mLastRx;
-        mLastTx = currentBytesTx;
+        
         mLastRx = currentBytesRx;
 
         if (deltaBytesRx < 0)
             deltaBytesRx = 0;
-        if (deltaBytesTx < 0)
-            deltaBytesTx = 0;
 
         final float deltaT = (currentTimeMillis - mLastUpdateTime) / 1000f;
+        if (isMultiLineStyle) {
+            final long currentBytesTx = TrafficStats.getTotalTxBytes();
+            long deltaBytesTx = currentBytesTx - mLastTx;
+            mLastTx = currentBytesTx;
+            
+            if (deltaBytesTx < 0)
+                deltaBytesTx = 0;
+            
+            setTextViewSpeed(mTextViewTx, deltaBytesTx, deltaT);
+        }
+        
         mLastUpdateTime = currentTimeMillis;
-        setTextViewSpeed(mTextViewTx, deltaBytesTx, deltaT);
         setTextViewSpeed(mTextViewRx, deltaBytesRx, deltaT);
 
         mHandler.removeCallbacks(mUpdateRunnable);
@@ -194,6 +214,23 @@ public class NetworkStatsView extends LinearLayout {
         tv.setText(fSpeed == (int) fSpeed ?
                 String.format("%d %s", (int)fSpeed, units) :
                 String.format("%.1f %s", fSpeed, units));
+    }
+    
+    private void updateStyle() {
+        mLayoutTop.setVisibility(isMultiLineStyle ? View.VISIBLE : View.GONE);
+        mImageIn.setVisibility(isMultiLineStyle ? View.VISIBLE : View.GONE);
+        mImageOut.setVisibility(isMultiLineStyle ? View.VISIBLE : View.GONE);
+        mTextViewTx.setVisibility(isMultiLineStyle ? View.VISIBLE : View.GONE);
+        if (isMultiLineStyle) {
+            mParams = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
+            mParams.gravity = Gravity.CENTER;
+            mLayoutBottom.setLayoutParams(mParams);
+        } else {
+            mParams = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT,0);
+            mParams.gravity = Gravity.CENTER_VERTICAL;
+            mParams.weight = 1;
+            mLayoutBottom.setLayoutParams(mParams);
+        }
     }
 }
 

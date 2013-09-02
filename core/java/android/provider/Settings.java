@@ -2944,6 +2944,12 @@ public final class Settings {
          * @hide
          */
         public static final String STATUS_BAR_NETWORK_STATS_UPDATE_INTERVAL = "status_bar_network_stats_update_frequency";
+        
+        /**
+         * Network stats display style
+         * @hide
+         */
+         public static final String STATUS_BAR_NETWORK_STATS_STYLE = "status_bar_network_stats_style";
 
         /**
          * Show the pending notification counts as overlays on the status bar

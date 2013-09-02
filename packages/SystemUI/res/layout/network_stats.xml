@@ -7,6 +7,7 @@
     android:visibility="gone" >
 
     <LinearLayout
+        android:id="@+id/top_group"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -16,6 +17,7 @@
             android:id="@+id/bytes_tx"
             style="@style/TextAppearance.StatusBar.NetworkStats" />
         <ImageView
+            android:id="@+id/img_out"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -23,6 +25,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/bottom_group"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -32,6 +35,7 @@
             android:id="@+id/bytes_rx"
             style="@style/TextAppearance.StatusBar.NetworkStats" />
         <ImageView
+            android:id="@+id/img_in"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
