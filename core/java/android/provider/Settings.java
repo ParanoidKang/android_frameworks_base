@@ -2974,6 +2974,13 @@ public final class Settings {
          * @hide
          */
         public static final String STATUS_BAR_CIRCLE_BATTERY = "status_bar_circle_battery";
+        
+        
+        /**	
+         * status bar traffic
+         * @hide
+         */
+        public static final String STATUS_BAR_TRAFFIC = "status_bar_traffic";
 
         /**
          * Quick Settings Panel Tiles to Use
