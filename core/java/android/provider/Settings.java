@@ -2753,6 +2753,12 @@ public final class Settings {
          * @hide
          */
         public static final String HALO_PAUSE = "halo_pause";
+        
+        /**
+         * Pie Power, should default to 0 (no, show only when needed)
+         * @hide
+         */
+        public static final String PIE_POWER = "pie_power";
 
         /**
          * Pie menu, should default to 1 (yes, show)
