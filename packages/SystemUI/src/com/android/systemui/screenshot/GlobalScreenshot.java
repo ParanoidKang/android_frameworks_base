@@ -230,12 +230,19 @@ class SaveImageInBackgroundTask extends AsyncTask<SaveImageInBackgroundData, Voi
                              PendingIntent.FLAG_CANCEL_CURRENT));
 
             // Trash Image
+=======
+            // ScreenShot QuickTrash starts here
+>>>>>>> FETCH_HEAD
             Intent trashIntent = new Intent();
             trashIntent.setClass(context, TrashScreenshot.class);
             trashIntent.putExtra(TrashScreenshot.SCREENSHOT_URI, uri.toString());
 
             mNotificationBuilder.addAction(R.drawable.ic_menu_trash,
+<<<<<<< HEAD
                      r.getString(com.android.internal.R.string.trash),
+=======
+                     r.getString(R.string.trash),
+>>>>>>> FETCH_HEAD
                      PendingIntent.getBroadcast(context, 0, trashIntent,
                         PendingIntent.FLAG_CANCEL_CURRENT));
 
@@ -243,6 +250,7 @@ class SaveImageInBackgroundTask extends AsyncTask<SaveImageInBackgroundData, Voi
             image.compress(Bitmap.CompressFormat.PNG, 100, out);
             out.flush();
             out.close();
+            // Ends Here
 
             // update file size in the database
             values.clear();
