@@ -79,7 +79,7 @@ LOCAL_SRC_FILES:= \
 	android_util_AssetManager.cpp \
 	android_util_Binder.cpp \
 	android_util_EventLog.cpp \
-        android_util_ExtendedPropertiesUtils.cpp \
+    android_util_ExtendedPropertiesUtils.cpp \
 	android_util_Log.cpp \
 	android_util_FloatMath.cpp \
 	android_util_Process.cpp \
@@ -151,12 +151,6 @@ LOCAL_SRC_FILES:= \
 	android_animation_PropertyValuesHolder.cpp \
 	com_android_internal_net_NetworkStatsFactory.cpp
 
-ifeq ($(BOARD_USES_QCOM_HARDWARE),true)
-    LOCAL_CFLAGS += -DQCOM_HARDWARE
-    LOCAL_SRC_FILES += \
-	    com_android_internal_app_ActivityTrigger.cpp
-endif
-
 LOCAL_C_INCLUDES += \
 	$(JNI_H_INCLUDE) \
 	$(LOCAL_PATH)/android/graphics \
@@ -214,7 +208,6 @@ LOCAL_SHARED_LIBRARIES := \
 	libicuuc \
 	libicui18n \
 	libmedia \
-	libmokee-phoneloc-jni \
 	libwpa_client \
 	libjpeg \
 	libusbhost \
