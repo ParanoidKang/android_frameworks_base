@@ -1,6 +1,6 @@
 #!/bin/bash
 make
 ./generateData Mps -c phoneloc.txt
-cp mokee-phoneloc.dat $dirname $(dirname $(dirname $(dirname $(dirname $(pwd)))))/vendor/mk/prebuilt/common/media/mokee-phoneloc.dat
+cp phoneloc.dat $dirname $(dirname $(dirname $(dirname $(dirname $(pwd)))))/vendor/pa/prebuilt/common/media/mokee-phoneloc.dat
 make clean
-rm mokee-phoneloc.dat
+rm phoneloc.dat
