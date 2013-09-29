@@ -83,6 +83,14 @@ public class TvStatusBar extends BaseStatusBar {
     @Override
     public void setHardKeyboardStatus(boolean available, boolean enabled) {
     }
+    
+    @Override
+    public void toggleNotificationShade() {
+    }
+
+    @Override
+    public void toggleStatusBar(boolean enable) {
+    }
 
     @Override
     public void toggleRecentApps() {

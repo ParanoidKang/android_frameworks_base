@@ -21,6 +21,7 @@ import android.app.StatusBarManager;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.Resources.NotFoundException;
+import android.provider.Settings;
 import android.util.AttributeSet;
 import android.util.EventLog;
 import android.util.Slog;
@@ -170,6 +171,9 @@ public class PhoneStatusBarView extends PanelBar {
         mBar.makeExpandedInvisibleSoon();
         mFadingPanel = null;
         mLastFullyOpenedPanel = null;
+        
+        Settings.System.putInt(mContext.getContentResolver(),
+            Settings.System.TOGGLE_NOTIFICATION_SHADE, 0);
     }
 
     @Override
