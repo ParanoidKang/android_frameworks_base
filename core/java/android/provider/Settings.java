@@ -2037,6 +2037,14 @@ public final class Settings {
             "notifications_use_ring_volume";
 
         /**
+         * Always turn on screen after call ignoring proximity?
+         * 0 = no
+         * 1 = yes
+         * @hide
+         */
+        public static final String INACCURATE_PROXIMITY_WORKAROUND = "inaccurate_proximity_sensor";
+
+        /**
          * Whether the blacklisting feature for phone calls is enabled
          * @hide
          */
