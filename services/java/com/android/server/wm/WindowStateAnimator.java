@@ -1205,7 +1205,9 @@ class WindowStateAnimator {
     public void prepareSurfaceLocked(final boolean recoveringMemory) {
         final WindowState w = mWin;
         if (mSurfaceControl == null) {
-            if (w.mOrientationChanging) {
+            if (!w.isDrawnLw()) {
+                displayed = true;
+            } else if (w.mOrientationChanging) {
                 if (DEBUG_ORIENTATION) {
                     Slog.v(TAG, "Orientation change skips hidden " + w);
                 }
