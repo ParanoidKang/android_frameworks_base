@@ -33,6 +33,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Parcelable;
+import android.os.PowerManager;
 import android.os.SystemProperties;
 import android.provider.Settings;
 import android.util.ColorUtils;
@@ -286,9 +287,18 @@ public class KeyguardViewManager {
         if ("FLASHLIGHT".equals(uri)) {
             context.sendBroadcast(new Intent(TorchConstants.ACTION_TOGGLE_STATE));
             return ACTION_RESULT_RUN;
+        } else if ("SLEEP".equals(uri)) {
+            sendToSleep(context);
+            return ACTION_RESULT_RUN;
         }
 
         return ACTION_RESULT_NOTRUN;
+    }
+    
+    private static void sendToSleep(Context context) {
+        final PowerManager pm;
+        pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
+        pm.goToSleep(SystemClock.uptimeMillis());
     }
 
     SparseArray<Parcelable> mStateContainer = new SparseArray<Parcelable>();
