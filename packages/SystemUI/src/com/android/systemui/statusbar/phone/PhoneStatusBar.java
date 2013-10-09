@@ -110,6 +110,7 @@ import com.android.systemui.statusbar.policy.NetworkController;
 import com.android.systemui.statusbar.policy.NotificationRowLayout;
 import com.android.systemui.statusbar.policy.OnSizeChangedListener;
 import com.android.systemui.statusbar.policy.Prefs;
+import com.android.systemui.statusbar.policy.Traffic;
 
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
@@ -394,6 +395,9 @@ public class PhoneStatusBar extends BaseStatusBar {
         mNotificationPanel.setStatusBar(this);
         mNotificationPanelIsFullScreenWidth =
             (mNotificationPanel.getLayoutParams().width == ViewGroup.LayoutParams.MATCH_PARENT);
+        
+        // handle traffic
+        mTraffic = (Traffic) mStatusBarView.findViewById(R.id.traffic);
 
         // make the header non-responsive to clicks
         mNotificationPanel.findViewById(R.id.header).setOnTouchListener(

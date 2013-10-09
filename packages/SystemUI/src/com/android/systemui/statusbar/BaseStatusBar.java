@@ -101,6 +101,7 @@ import com.android.systemui.statusbar.policy.BatteryController;
 import com.android.systemui.statusbar.policy.Clock;
 import com.android.systemui.statusbar.policy.NetworkController;
 import com.android.systemui.statusbar.policy.NotificationRowLayout;
+import com.android.systemui.statusbar.policy.Traffic;
 import com.android.systemui.statusbar.tablet.StatusBarPanel;
 import com.android.systemui.statusbar.tablet.TabletTicker;
 import com.android.systemui.statusbar.view.PieStatusPanel;
@@ -178,6 +179,7 @@ public abstract class BaseStatusBar extends SystemUI implements
     public BatteryController mBatteryController;
     public SignalClusterView mSignalCluster;
     public Clock mClock;
+    public Traffic mTraffic;
 
     // left-hand icons 
     public LinearLayout mStatusIcons;
@@ -737,6 +739,7 @@ public abstract class BaseStatusBar extends SystemUI implements
 
         if (!colorInfo.lastColorString.equals(mLastIconColor.lastColorString)) {
             if(mClock != null) mClock.setTextColor(colorInfo.lastColor);
+            if(mTraffic != null) mTraffic.setTextColor(colorInfo.lastColor);
             if(mSignalCluster != null) mSignalCluster.setColor(colorInfo);
             if(mBatteryController != null) mBatteryController.setColor(colorInfo);
             if (mStatusIcons != null) {
