@@ -3354,7 +3354,6 @@ public final class Settings {
          *
          * @hide
          */
-<<<<<<< HEAD
 	    public static final String VOLUME_KEYS_CONTROL_RING_STREAM = "volume_keys_control_ring_stream";
 	
 	    /**
@@ -3367,11 +3366,6 @@ public final class Settings {
          public static final String SWAP_VOLUME_KEYS_ON_ROTATION = "swap_volume_keys_on_rotation";
         
 	    /**
-=======
-	public static final String VOLUME_KEYS_CONTROL_RING_STREAM = "volume_keys_control_ring_stream";
-
-	/**
->>>>>>> FETCH_HEAD
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
