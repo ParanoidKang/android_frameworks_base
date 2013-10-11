@@ -1175,7 +1175,7 @@ public class TabletStatusBar extends BaseStatusBar implements
         if (hasTicker(n.getNotification()) && mStatusBarView.getWindowToken() != null) {
 
             if (0 == (mDisabled & (StatusBarManager.DISABLE_NOTIFICATION_ICONS
-                            | StatusBarManager.DISABLE_NOTIFICATION_TICKER))) {               
+                            | StatusBarManager.DISABLE_NOTIFICATION_TICKER))) {
                 mTabletTicker.add(key, n);
                 if (mHaloActive) {
                     mFeedbackIconArea.setVisibility(View.VISIBLE);
@@ -1188,7 +1188,6 @@ public class TabletStatusBar extends BaseStatusBar implements
 
     // called by TabletTicker when it's done with all queued ticks
     public void doneTicking() {
-        //if (mHaloActive) return;
         mFeedbackIconArea.setVisibility(View.VISIBLE);
     }
 
