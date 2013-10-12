@@ -262,4 +262,7 @@
     <string name="halo_tutorial1">Hello!我是Halo!</string>
     <string name="halo_tutorial2">拖动我:双击并按住拖动</string>
     <string name="halo_tutorial3">切换程序:横向滑动</string>
+    
+    <string name="status_bar_recent_floating_item_title">浮动模式</string>
+    <string name="status_bar_notification_floating_item_title">浮动模式</string>
 </resources>
