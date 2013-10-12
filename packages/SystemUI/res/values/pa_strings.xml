@@ -106,6 +106,4 @@
     <string name="halo_signal_bars_1">ONE BAR</string>
     <string name="halo_signal_bars_none">NO BARS</string>
 
-    <!--ScreenShot Trash-->
-    <string name="trash">Trash</string>
 </resources>
