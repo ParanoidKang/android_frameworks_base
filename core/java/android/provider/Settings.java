@@ -2050,6 +2050,12 @@ public final class Settings {
          * @hide
          */
         public static final String INACCURATE_PROXIMITY_WORKAROUND = "inaccurate_proximity_sensor";
+        
+        /**
+         * Whether enabled PackageInstaller Quick Mode
+         * @hide
+         */
+         public static final String PACKAGE_INSTALLER_QUICK_MODE_ENABLED = "package_installer_quick_mode_enabled";
 
         /**
          * Whether the blacklisting feature for phone calls is enabled
