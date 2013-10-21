@@ -3855,9 +3855,6 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                     } else if (DEBUG_LAYOUT) {
                         Log.v(TAG, "Preventing status bar from hiding by policy");
                     }
-                } else if (enabledExpDesktop && showStatusbar) {
-                    // if enabled expanded desktop and show statusbar,then just hide navbar
-                    updateHybridLayout();
                 } else {
                     if (DEBUG_LAYOUT) Log.v(TAG, "** SHOWING status bar: top is not fullscreen");
                     if (mStatusBar.showLw(true)) changes |= FINISH_LAYOUT_REDO_LAYOUT;
