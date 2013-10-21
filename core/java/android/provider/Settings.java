@@ -2737,6 +2737,12 @@ public final class Settings {
          * @hide
          */
         public static final String EXPANDED_DESKTOP_STATE = "expanded_desktop_state";
+        
+        /**
+         * Enable expanded desktop with status bar
+         * @hide
+         */
+        public static final String EXPANDED_DESKTOP_ENABLE_STATUSBAR = "expanded_desktop_enable_statusbar";
 
         /**
         * Override and forcefully disable the fullscreen keyboard

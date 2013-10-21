@@ -3829,9 +3829,12 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                 // case though.
                 boolean toggleNotificationShade = Settings.System.getInt(mContext.getContentResolver(),
                         Settings.System.TOGGLE_NOTIFICATION_SHADE, 0) == 1;
-                if ((topIsFullscreen && !toggleNotificationShade)
-                        || (Settings.System.getInt(mContext.getContentResolver(),
-                        Settings.System.EXPANDED_DESKTOP_STATE, 0) == 1 && !toggleNotificationShade)) {
+                boolean enabledExpDesktop = Settings.System.getInt(mContext.getContentResolver(),
+                        Settings.System.EXPANDED_DESKTOP_STATE, 0) == 1;
+                boolean showStatusbar = Settings.System.getInt(mContext.getContentResolver(),
+                        Settings.System.EXPANDED_DESKTOP_ENABLE_STATUSBAR, 0) == 1;
+                if ((topIsFullscreen && !toggleNotificationShade) ||
+                        enabledExpDesktop && !showStatusbar && !toggleNotificationShade) {
                     if (DEBUG_LAYOUT) Log.v(TAG, "** HIDING status bar");
                     if (mStatusBar.hideLw(true)) {
                         changes |= FINISH_LAYOUT_REDO_LAYOUT;
@@ -3852,6 +3855,9 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                     } else if (DEBUG_LAYOUT) {
                         Log.v(TAG, "Preventing status bar from hiding by policy");
                     }
+                } else if (enabledExpDesktop && showStatusbar) {
+                    // if enabled expanded desktop and show statusbar,then just hide navbar
+                    updateHybridLayout();
                 } else {
                     if (DEBUG_LAYOUT) Log.v(TAG, "** SHOWING status bar: top is not fullscreen");
                     if (mStatusBar.showLw(true)) changes |= FINISH_LAYOUT_REDO_LAYOUT;
