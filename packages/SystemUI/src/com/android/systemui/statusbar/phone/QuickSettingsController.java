@@ -45,6 +45,8 @@ import static com.android.internal.util.cm.QSUtils.deviceSupportsBluetooth;
 import static com.android.internal.util.cm.QSUtils.deviceSupportsMobileData;
 import static com.android.internal.util.cm.QSUtils.deviceSupportsUsbTether;
 import static com.android.internal.util.cm.QSUtils.deviceSupportsLte;
+import static com.android.internal.util.cm.QSUtils.deviceSupportsGps;
+import static com.android.internal.util.cm.QSUtils.deviceSupportsTorch;
 
 import android.content.BroadcastReceiver;
 import android.content.ContentResolver;
@@ -130,6 +132,8 @@ public class QuickSettingsController {
         boolean bluetoothSupported = deviceSupportsBluetooth();
         boolean mobileDataSupported = deviceSupportsMobileData(mContext);
         boolean lteSupported = deviceSupportsLte(mContext);
+        boolean gpsSupported = deviceSupportsGps(mContext);
+        boolean torchSupported = deviceSupportsTorch(mContext);
 
         if (!bluetoothSupported) {
             TILES_DEFAULT.remove(TILE_BLUETOOTH);
@@ -143,6 +147,14 @@ public class QuickSettingsController {
 
         if (!lteSupported) {
             TILES_DEFAULT.remove(TILE_LTE);
+        }
+        
+        if (!gpsSupported) {
+            TILES_DEFAULT.remove(TILE_GPS);
+        }
+
+        if (!torchSupported) {
+            TILES_DEFAULT.remove(TILE_TORCH);
         }
 
         // Read the stored list of tiles

@@ -1,5 +1,6 @@
 package com.android.internal.util.cm;
 
+import android.R;
 import android.bluetooth.BluetoothAdapter;
 import android.content.ContentResolver;
 import android.content.Context;
@@ -41,5 +42,13 @@ public class QSUtils {
         public static boolean deviceSupportsLte(Context ctx) {
             final TelephonyManager tm = (TelephonyManager) ctx.getSystemService(Context.TELEPHONY_SERVICE);
             return (tm.getLteOnCdmaMode() == PhoneConstants.LTE_ON_CDMA_TRUE) || tm.getLteOnGsmMode() != 0;
+        }
+        
+        public static boolean deviceSupportsGps(Context context) {
+            return context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_LOCATION_GPS);
+        }
+
+        public static boolean deviceSupportsTorch(Context context) {
+            return context.getResources().getBoolean(com.android.internal.R.bool.config_enableTorch);
         }
 }

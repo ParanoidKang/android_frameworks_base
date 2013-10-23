@@ -1928,5 +1928,8 @@
 
   <!-- Irda Service -->
   <java-symbol type="bool" name="config_enableIrdaManagerService" />
+  
+  <!-- LED flashlight -->
+  <java-symbol type="bool" name="config_enableTorch" />
 
 </resources>

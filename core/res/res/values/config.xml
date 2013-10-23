@@ -1243,5 +1243,8 @@
 
     <!-- True if the Irda service should be started at system start -->
     <bool name="config_enableIrdaManagerService">false</bool>
+    
+    <!-- Device supports LED flashlight -->
+    <bool name="config_enableTorch">false</bool>
 
 </resources>
