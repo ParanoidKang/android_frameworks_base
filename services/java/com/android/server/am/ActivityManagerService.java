@@ -11723,12 +11723,8 @@ public final class ActivityManagerService  extends ActivityManagerNative
                         "Receiver requested to register for user " + userId
                         + " was previously registered for user " + rl.userId);
             }
-
-            boolean isSystem = callerApp != null ?
-                    (callerApp.info.flags & ApplicationInfo.FLAG_SYSTEM) != 0 : false;
-
             BroadcastFilter bf = new BroadcastFilter(filter, rl, callerPackage,
-                    permission, callingUid, userId, isSystem);
+                    permission, callingUid, userId, (callerApp.info.flags & ApplicationInfo.FLAG_SYSTEM) != 0);
             rl.add(bf);
             if (!bf.debugCheck()) {
                 Slog.w(TAG, "==> For Dynamic broadast");
