@@ -688,14 +688,6 @@ public class GlowPadView extends View {
         hideTargets(false, false);
     }
 
-    private void internalSetTargetResources(ArrayList<TargetDrawable> drawList) {
-        mTargetResourceId = 0;
-        mTargetDrawables = drawList;
-        updateTargetPositions(mWaveCenterX, mWaveCenterY);
-        updatePointCloudPosition(mWaveCenterX, mWaveCenterY);
-        hideTargets(false, false);
-    }
-
     /**
      * Loads an array of drawables from the given resourceId.
      *
@@ -719,23 +711,10 @@ public class GlowPadView extends View {
         }
     }
 
-    public void setTargetResources(ArrayList<TargetDrawable> drawList) {
-        if (mAnimatingTargets) {
-            // postpone this change until we return to the initial state
-            mNewTargetDrawables = drawList;
-        } else {
-            internalSetTargetResources(drawList);
-        }
-    }
-
     public int getTargetResourceId() {
         return mTargetResourceId;
     }
     
-    public ArrayList<TargetDrawable> getTargetDrawables() {
-        return mTargetDrawables;
-    }
-
     public ArrayList<TargetDrawable> getTargetDrawables() {
         return mTargetDrawables;
     }
