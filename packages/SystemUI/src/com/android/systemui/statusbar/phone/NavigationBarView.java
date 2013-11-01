@@ -85,7 +85,6 @@ public class NavigationBarView extends LinearLayout implements NavigationCallbac
     private NavbarEditor mEditBar;
     private NavBarReceiver mNavBarReceiver;
     private OnClickListener mRecentsClickListener;
-    private OnLongClickListener mRecentsLongClickListener;
     private OnTouchListener mRecentsPreloadListener;
     private OnTouchListener mHomeSearchActionListener;
 
@@ -189,18 +188,12 @@ public class NavigationBarView extends LinearLayout implements NavigationCallbac
         mRecentsPreloadListener = RecentsPreloadListener;
         mHomeSearchActionListener = HomeSearchActionListener;
     }
-    
-    protected void setListener(OnLongClickListener LongClickListener) {
-        mRecentsLongClickListener = LongClickListener;
-    }
 
     protected void toggleButtonListener(boolean enable) {
         View recentView = getRecentsButton();
         if (recentView != null) {
             recentView.setOnClickListener(enable ? mRecentsClickListener : null);
             recentView.setOnTouchListener(enable ? mRecentsPreloadListener : null);
-            if (mRecentsLongClickListener != null) recentView.
-                    setOnLongClickListener(enable ? mRecentsLongClickListener : null);
         }
         View homeView = getHomeButton();
         // We cannot remove home button, so no need to null-check

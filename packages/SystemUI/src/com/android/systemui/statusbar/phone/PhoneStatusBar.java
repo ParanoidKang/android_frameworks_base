@@ -813,16 +813,6 @@ protected WindowManager.LayoutParams getRecentsLayoutParams(LayoutParams layoutP
             }
         }
     };
-    
-    private View.OnLongClickListener mRecentsLongClickListener = new View.OnLongClickListener() {
-        public boolean onLongClick(View v) {
-            try {
-                mBarService.toggleLastApp();
-            } catch (RemoteException e) {
-            }
-            return false;
-        }
-    };
 
     private int mShowSearchHoldoff = 0;
     private Runnable mShowSearchPanel = new Runnable() {
@@ -864,7 +854,6 @@ protected WindowManager.LayoutParams getRecentsLayoutParams(LayoutParams layoutP
 
     private void prepareNavigationBarView() {
         mNavigationBarView.setListener(mRecentsClickListener,mRecentsPreloadOnTouchListener, mHomeSearchActionListener);
-        mNavigationBarView.setListener(mRecentsLongClickListener);
         updateSearchPanel();
         mNavigationBarView.reorient();
     }

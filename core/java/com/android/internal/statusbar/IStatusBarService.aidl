@@ -50,7 +50,6 @@ interface IStatusBarService
     void setHardKeyboardEnabled(boolean enabled);
     void toggleNotificationShade();
     void toggleStatusBar(boolean enable);
-    void toggleLastApp();
     void toggleRecentApps();
     void preloadRecentApps();
     void cancelPreloadRecentApps();
